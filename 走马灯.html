@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>走马灯</title>
+    <script>
+        var i = -100;
+        function setColor()
+        {
+            var color = new Array("red","blue","green","black","turquoise","coral","orange","lime","violet");
+            var i = Math.round(Math.random()*8);
+            document.getElementById("text").style.color = color[i];
+        }
+        function setScroll()
+        {
+            var text = document.getElementById("text");
+            text.style.marginLeft = i + "px";
+            i = i + 10;
+            if(i > 200){i = -100;}
+            setTimeout("setScroll()",500);
+        }
+        function changeColor()
+        {
+            setInterval("setColor()",500);
+        }
+        function func()
+        {
+            changeColor();
+            setScroll();
+        }
+    </script>
+</head>
+
+<body onLoad="func()">
+<div style="width:200px; overflow:hidden; background-color:#CCC;"><div id="text" style="width:100px;">显示随机颜色</div></div>
+</body>
+</html>
